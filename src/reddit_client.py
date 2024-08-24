@@ -11,7 +11,6 @@ class RedditClient:
         self.user_agent = user_agent
         self.reddit = self.authenticate()
 
-    # Authenticate with Reddit using credentials from config.py
     def authenticate(self) -> Optional[praw.Reddit]:
         try:
             # Create a Reddit instance with the provided credentials
@@ -26,6 +25,7 @@ class RedditClient:
         
     def fetch_comments(self, submission_url: str, limit: int = 5) -> List[str]:
         if not self.reddit:
+            print("Reddit authentication failed. Cannot fetch comments.")
             return []
         
         try:
@@ -35,15 +35,12 @@ class RedditClient:
 
             # Get all comments and sort them by score in descending order
             comments = submission.comments.list()
-            sorted_comments = sorted(comments, key=lambda comment: comment.score, reverse=True)
-
-            # Get the top comments based on the limit
-            top_comments = sorted_comments[:limit]
+            top_comments = sorted(comments, key=lambda comment: comment.score, reverse=True)[:limit]
 
             # Print the top comments
-            for i,v in enumerate(top_comments):
-                print(f"Comment {i + 1}: {v.body}")
-                print(f"Score: {v.score}")
+            for i, comment in enumerate(top_comments):
+                print(f"Comment {i + 1}: {comment.body}")
+                print(f"Score: {comment.score}")
                 print('-' * 80)
 
         except Exception as e:
