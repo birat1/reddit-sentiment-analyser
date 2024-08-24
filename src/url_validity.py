@@ -3,8 +3,9 @@ from urllib.parse import urlparse
 def is_valid_reddit_url(url: str) -> bool:
     try:
         parsed_url =  urlparse(url)
+
         # Check if the URL is on 'reddit.com' domain
-        if parsed_url.netloc not in ['www.reddit.com', 'old.reddit.com']:
+        if parsed_url.netloc not in {'www.reddit.com', 'old.reddit.com'}:
             return False
         
         # Split the URL into parts
