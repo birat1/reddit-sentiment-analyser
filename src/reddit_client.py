@@ -22,7 +22,7 @@ class RedditClient:
             print(f"Authentication failed: {e}")
             return None
         
-    def fetch_comments(self, submission_url):
+    def fetch_comments(self, submission_url, limit=5):
         if not self.reddit:
             print("Reddit authentication failed. Cannot fetch comments.")
             return []
