@@ -1,8 +1,7 @@
 import praw
-from config import CLIENT_ID, CLIENT_SECRET, USER_AGENT
-from typing import List, Optional
-
 from url_validity import is_valid_reddit_url
+
+from config import CLIENT_ID, CLIENT_SECRET, USER_AGENT
 
 class RedditClient:
     def __init__(self, client_id, client_secret, user_agent):
@@ -11,7 +10,7 @@ class RedditClient:
         self.user_agent = user_agent
         self.reddit = self.authenticate()
 
-    def authenticate(self) -> Optional[praw.Reddit]:
+    def authenticate(self):
         try:
             # Create a Reddit instance with the provided credentials
             reddit = praw.Reddit(client_id=self.client_id,
@@ -23,7 +22,7 @@ class RedditClient:
             print(f"Authentication failed: {e}")
             return None
         
-    def fetch_comments(self, submission_url: str, limit: int = 5) -> List[str]:
+    def fetch_comments(self, submission_url):
         if not self.reddit:
             print("Reddit authentication failed. Cannot fetch comments.")
             return []
@@ -37,11 +36,12 @@ class RedditClient:
             comments = submission.comments.list()
             top_comments = sorted(comments, key=lambda comment: comment.score, reverse=True)[:limit]
 
-            # Print the top comments
-            for i, comment in enumerate(top_comments):
-                print(f"Comment {i + 1}: {comment.body}")
-                print(f"Score: {comment.score}")
-                print('-' * 80)
+            # Store the top comments in a list
+            top_comments_list = []
+            for comment in top_comments:
+                top_comments_list.append(comment.body)
+            
+            return top_comments_list
 
         except Exception as e:
             print(f"Error fetching comments: {e}")

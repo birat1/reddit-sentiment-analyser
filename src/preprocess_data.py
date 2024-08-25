@@ -3,7 +3,6 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
-from typing import List
 
 # Download the necessary NLTK data files
 nltk.download('stopwords')
@@ -15,7 +14,7 @@ lemmatizer = WordNetLemmatizer()
 stop_words = set(stopwords.words('english'))
 
 # Clean the comment by removing URLs, special characters, stop words, and converting to lowercase
-def clean_comment(comment: str) -> str:
+def clean_comment(comment):
     # Remove URLs, special characters, and convert to lowercase
     comment = re.sub(r"http\S+|www\S+|https\S+|@\S+|#\S+", " ", comment)
     comment = re.sub(r"[^\w\s]", "", comment)
@@ -29,7 +28,7 @@ def clean_comment(comment: str) -> str:
     return " ".join(cleaned_tokens)
 
 # Preprocess a list of comments
-def preprocess(comments: List[str]) -> List[str]:
+def preprocess(comments):
     cleaned_comments = [clean_comment(comment) for comment in comments]
 
     return cleaned_comments

@@ -1,6 +1,6 @@
 from urllib.parse import urlparse
 
-def is_valid_reddit_url(url: str) -> bool:
+def is_valid_reddit_url(url):
     try:
         parsed_url =  urlparse(url)
 

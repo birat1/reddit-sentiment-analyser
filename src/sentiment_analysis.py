@@ -1,7 +1,6 @@
 from textblob import TextBlob
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from transformers import pipeline
-from typing import Any, Dict, List, Tuple
 
 # Initialize VADER sentiment analyzer
 vader_analyzer = SentimentIntensityAnalyzer()
@@ -11,26 +10,26 @@ basic_sentiment_model = pipeline("text-classification", model="cardiffnlp/twitte
 fine_grained_model = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base")
 
 # Analyze sentiment using TextBlob
-def textblob_sentiment(comment: str) -> Tuple[float, float]:
+def textblob_sentiment(comment):
     blob = TextBlob(comment)
     return blob.sentiment.polarity, blob.sentiment.subjectivity
 
 # Analyze sentiment using VADER
-def vader_sentiment(comment: str) -> float:
+def vader_sentiment(comment):
     scores = vader_analyzer.polarity_scores(comment)
     return scores['compound']
 
 # Analyze sentiment using a basic transformer model
-def basic_sentiment_analysis(comment: str) -> Tuple[str, float]:
+def basic_sentiment_analysis(comment):
     result = basic_sentiment_model(comment)
     return result[0]['label'], result[0]['score']
 
-def fine_grained_sentiment_analysis(comment: str) -> Tuple[str, float]:
+def fine_grained_sentiment_analysis(comment):
     result = fine_grained_model(comment)[0]
     return result['label'], result['score']
 
 # Combine all sentiment analysis methods
-def combined_sentiment_analysis(comments: List[str]) -> List[Dict[str, Any]]:
+def combined_sentiment_analysis(comments):
     results = []
 
     # Iterate over each comment and perform sentiment analysis
