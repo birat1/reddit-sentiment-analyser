@@ -4,12 +4,14 @@ from url_validity import is_valid_reddit_url
 from config import CLIENT_ID, CLIENT_SECRET, USER_AGENT
 
 class RedditClient:
+    # Initialize the Reddit client with the provided credentials
     def __init__(self, client_id, client_secret, user_agent):
         self.client_id = client_id
         self.client_secret = client_secret
         self.user_agent = user_agent
         self.reddit = self.authenticate()
 
+    # Authenticate the Reddit client
     def authenticate(self):
         try:
             # Create a Reddit instance with the provided credentials
@@ -22,7 +24,8 @@ class RedditClient:
             print(f"Authentication failed: {e}")
             return None
         
-    def fetch_comments(self, submission_url, limit=5):
+    # Fetch comments from a Reddit post    
+    def fetch_comments(self, submission_url, limit=10):
         if not self.reddit:
             print("Reddit authentication failed. Cannot fetch comments.")
             return []
