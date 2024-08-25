@@ -3,9 +3,12 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from transformers import pipeline
 from typing import Any, Dict, List, Tuple
 
-# Initialize sentiment analysis once
+# Initialize VADER sentiment analyzer
 vader_analyzer = SentimentIntensityAnalyzer()
-transformer_sentiment = pipeline("sentiment-analysis", model="distilbert/distilbert-base-uncased-finetuned-sst-2-english")
+
+# Initialize transformer sentiment analysis models
+basic_sentiment_model = pipeline("text-classification", model="cardiffnlp/twitter-roberta-base-sentiment-latest")
+fine_grained_model = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base")
 
 # Analyze sentiment using TextBlob
 def textblob_sentiment(comment: str) -> Tuple[float, float]:
@@ -17,20 +20,25 @@ def vader_sentiment(comment: str) -> float:
     scores = vader_analyzer.polarity_scores(comment)
     return scores['compound']
 
-# Analyze sentiment using a Hugging Face transformer model
-def transformer_sentiment_analysis(comment: str) -> Tuple[str, float]:
-    result = transformer_sentiment(comment)
+# Analyze sentiment using a basic transformer model
+def basic_sentiment_analysis(comment: str) -> Tuple[str, float]:
+    result = basic_sentiment_model(comment)
     return result[0]['label'], result[0]['score']
 
+def fine_grained_sentiment_analysis(comment: str) -> Tuple[str, float]:
+    result = fine_grained_model(comment)[0]
+    return result['label'], result['score']
+
 # Combine all sentiment analysis methods
-def combined_sentiment_analysis(comment: List[str]) -> List[Dict[str, Any]]:
+def combined_sentiment_analysis(comments: List[str]) -> List[Dict[str, Any]]:
     results = []
 
     # Iterate over each comment and perform sentiment analysis
     for comment in comments:
         textblob_polarity, textblob_subjectivity = textblob_sentiment(comment)
         vader_score = vader_sentiment(comment)
-        transformer_label, transformer_score = transformer_sentiment_analysis(comment)
+        basic_label, basic_score = basic_sentiment_analysis(comment)
+        fine_grained_label, fine_grained_score = fine_grained_sentiment_analysis(comment)
 
         # Append the results to a list
         results.append({
@@ -38,8 +46,10 @@ def combined_sentiment_analysis(comment: List[str]) -> List[Dict[str, Any]]:
             "TextBlob Polarity": textblob_polarity,
             "TextBlob Subjectivity": textblob_subjectivity,
             "VADER Score": vader_score,
-            "Transformer Label": transformer_label,
-            "Transformer Score": transformer_score
+            "Basic Transformer Label": basic_label,
+            "Basic Transformer Score": basic_score,
+            "Fine-Grained Label": fine_grained_label,
+            "Fine-Grained Score": fine_grained_score
         })
 
     return results
