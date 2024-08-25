@@ -20,8 +20,6 @@ reddit-sentiment-analyzer/
 ## Prerequisites
 
 - Python 3.7 or higher
-- Virtual environment (venv)
-- pip
 - Reddit Developer Application
 
 ## Installation
