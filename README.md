@@ -1,6 +1,6 @@
 # Reddit Sentiment Analyzer
 
-This project performs sentiment analysis on Reddit comments using multiple sentiment analysis models, including TextBlob, VADER, and a distilbert model from Hugging Face.
+This project performs sentiment analysis on Reddit comments using multiple sentiment analysis models, including TextBlob, VADER, and transformer models from Hugging Face.
 
 ## Project Structure
 
