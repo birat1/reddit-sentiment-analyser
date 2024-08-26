@@ -56,6 +56,7 @@ reddit-sentiment-analyzer/
     - You can obtain your Reddit API credentials by creating an application at [Reddit Apps](https://www.reddit.com/prefs/apps/).
 
 ## Dependencies
+
 - `praw` - For interacting with the Reddit API.
 - `textblob` - For sentiment analysis.
 - `vaderSentiment` - For sentiment analysis using VADER.
