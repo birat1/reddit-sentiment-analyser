@@ -42,7 +42,9 @@ class RedditClient:
             # Store the top comments in a list
             top_comments_list = []
             for comment in top_comments:
-                top_comments_list.append(comment.body)
+                # Check if the comment is not deleted or removed
+                if comment.body not in ['[deleted]', '[removed]']:
+                    top_comments_list.append(comment.body)
             
             return top_comments_list
 
@@ -63,5 +65,9 @@ if __name__ == "__main__":
         print("Invalid Reddit URL. Please enter a valid Reddit post URL.")
     else:
         # Fetch and display comments if the URL is valid
-        reddit_client.fetch_comments(submission_url)
+        comments = reddit_client.fetch_comments(submission_url)
+
+        for comment in comments:
+            print(comment)
+            print()
         
