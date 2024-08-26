@@ -5,21 +5,37 @@
     --font-family: "Noto Sans Mono", "Consolas", monospace;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     background: var(--background);
     font-family: var(--font-family);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
 }
 
-.logo {
+.title {
     color: var(--text-color);
-    height: 2rem;
-    gap: .1rem;
     font-size: 1.3rem;
+    margin-bottom: .8rem; /* Add margin to move the title down */
+}
+
+.input-url-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
 }
 
 .input-url-box {
@@ -31,7 +47,6 @@ body {
     width: 650px;
     max-width: 100%;
     font-size: .9rem;
-    padding-left: 20px;
 }
 
 .input-url-box::placeholder {
