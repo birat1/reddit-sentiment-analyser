@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sentiment Analysis Results</title>
+    </head>
+    <body>
+        <h1>Sentiment Analysis Results</h1>
+        <ul>
+            {% for result in results %}
+            <li>
+                <Strong>Comment:</Strong> {{ result['Comment'] }}<br>
+                <Strong>TextBlob Polarity:</Strong> {{ result['TextBlob Polarity'] }}<br>
+                <Strong>TextBlob Subjectivity:</Strong> {{ result['TextBlob Subjectivity'] }}<br>
+                <Strong>VADER Score:</Strong> {{ result['VADER Score'] }}<br>
+                <Strong>Basic Transformer Label:</Strong> {{ result['Basic Transformer Label'] }}<br>
+                <Strong>Basic Transformer Score:</Strong> {{ result['Basic Transformer Score'] }}<br>
+                <Strong>Fine-Grained Label:</Strong> {{ result['Fine-Grained Label'] }}<br>
+                <Strong>Fine-Grained Score:</Strong> {{ result['Fine-Grained Score'] }}<br>
+                <br>
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="/">Analyze another URL</a>
+    </body>
+</html>
