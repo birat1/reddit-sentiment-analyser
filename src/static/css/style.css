@@ -1,0 +1,46 @@
+:root {
+    --background: #000000;
+    --text-color: #dfdfdf;
+    --border-color: #686868;
+    --font-family: "Noto Sans Mono", "Consolas", monospace;
+}
+
+body {
+    background: var(--background);
+    font-family: var(--font-family);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.logo {
+    color: var(--text-color);
+    height: 2rem;
+    gap: .1rem;
+    font-size: 1.3rem;
+}
+
+.input-url-box {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    border-bottom: .1rem solid var(--border-color);
+    color: var(--text-color);
+    width: 650px;
+    max-width: 100%;
+    font-size: .9rem;
+    padding-left: 20px;
+}
+
+.input-url-box::placeholder {
+    color: var(--border-color);
+}
+
+.input-url-box:focus {
+    background: none; /* Keep the background transparent */
+    border-bottom-color: var(--border-color); /* Keep the bottom border color the same */
+    box-shadow: none;
+    color: var(--text-color);
+}
