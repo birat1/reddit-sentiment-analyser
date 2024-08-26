@@ -29,9 +29,19 @@ def clean_comment(comment):
 
 # Preprocess a list of comments
 def preprocess(comments):
-    cleaned_comments = [clean_comment(comment) for comment in comments]
+    processed_comments = []
 
-    return cleaned_comments
+    for comment in comments:
+        # Replace newline and carriage return characters with spaces
+        comment = comment.replace('\n', ' ').replace('\r', ' ')
+
+        cleaned_comment = clean_comment(comment)
+        processed_comments.append({
+            "Original": comment,
+            "Cleaned": cleaned_comment
+        })
+
+    return processed_comments
 
 if __name__ == "__main__":
     comments = [
@@ -43,4 +53,7 @@ if __name__ == "__main__":
     ]
 
     cleaned_comments = preprocess(comments)
-    print(cleaned_comments)
+
+    for comment in cleaned_comments:
+        print(comment)
+        print()

@@ -34,14 +34,17 @@ def combined_sentiment_analysis(comments):
 
     # Iterate over each comment and perform sentiment analysis
     for comment in comments:
-        textblob_polarity, textblob_subjectivity = textblob_sentiment(comment)
-        vader_score = vader_sentiment(comment)
-        basic_label, basic_score = basic_sentiment_analysis(comment)
-        fine_grained_label, fine_grained_score = fine_grained_sentiment_analysis(comment)
+        original_comment = comment["Original"]
+        cleaned_comment = comment["Cleaned"]
+
+        textblob_polarity, textblob_subjectivity = textblob_sentiment(cleaned_comment)
+        vader_score = vader_sentiment(cleaned_comment)
+        basic_label, basic_score = basic_sentiment_analysis(cleaned_comment)
+        fine_grained_label, fine_grained_score = fine_grained_sentiment_analysis(cleaned_comment)
 
         # Append the results to a list
         results.append({
-            "Comment": comment,
+            "Comment": original_comment,
             "TextBlob Polarity": textblob_polarity,
             "TextBlob Subjectivity": textblob_subjectivity,
             "VADER Score": vader_score,
