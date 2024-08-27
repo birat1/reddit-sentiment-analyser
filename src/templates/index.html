@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reddit Sentiment Analysis</title>
 
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,20 +15,20 @@
         <link rel="stylesheet" href="../static/css/style.css">
 
         <link rel="icon" href="../static/images/logo.png" type="image/png">
-
-        <title>Reddit Sentiment Analysis</title>
     </head>
     <body>
         <h1 class="text-center title">reddit sentiment analyzer</h1>
 
         <div class="input-url-wrapper">
-            <form action="/analyze" method="post" class="mt-4">
-                <div class="mb-3">
-                    <input type="text" id="url" name="url" class="form-control input-url-box" placeholder="enter reddit post url" autocomplete="off" required>
+            <form id="analyzeForm" action="/analyze" method="post">
+                <div class="mb-3 position-relative">
+                    <input type="text" id="url" name="url" class="form-control input-url-box" placeholder="enter reddit post url" autocomplete="off">
+                    <button type="button" class="clear-button" id="clear-button">&times;</button>
                 </div>
-                <button type="submit" class="btn btn-primary">analyze</button>
+                <button type="submit" class="btn btn-dark">analyze</button>
             </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="../static/js/script.js"></script>
     </body>
 </html>
