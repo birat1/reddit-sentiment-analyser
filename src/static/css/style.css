@@ -2,6 +2,9 @@
     --background: #000000;
     --text-color: #dfdfdf;
     --border-color: #686868;
+    --hover-border-color: #8b8b8b;
+    --button-background: #252525bd;
+    --box-shadow-color: #ffffff18;
     --font-family: "Noto Sans Mono", "Consolas", monospace;
 }
 
@@ -14,15 +17,15 @@
 html, body {
     height: 100%;
     overflow: hidden;
-}
-
-body {
     background: var(--background);
     font-family: var(--font-family);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+body {
+    flex-direction: column;
 }
 
 .title {
@@ -41,7 +44,7 @@ body {
 
 .input-url-box {
     background: none;
-    border: 0;
+    border: none;
     border-radius: 0;
     border-bottom: .1rem solid var(--border-color);
     color: var(--text-color);
@@ -58,7 +61,7 @@ body {
 .input-url-box:focus {
     outline: none;
     background: none; 
-    border-bottom-color: #8b8b8b;
+    border-bottom-color: var(--hover-border-color);
     box-shadow: none;
     color: var(--text-color);
 }
@@ -67,14 +70,14 @@ body {
     padding: 5px 12px;
     font-size: .9rem;
     color: var(--text-color);
-    background: #252525bd;
-    box-shadow: #ffffff18 0px 0px 0px .1rem;
+    background: var(--button-background);
+    box-shadow: var(--box-shadow-color) 0px 0px 0px .1rem;
     transition: background .3s ease;
 }
 
 .btn:hover {
-    background: #252525bd;
-    box-shadow: #ffffff18 0px 0px 0px .1rem;
+    background: var(--button-background);
+    box-shadow: var(--box-shadow-color) 0px 0px 0px .1rem;
 }
 
 .clear-button {
