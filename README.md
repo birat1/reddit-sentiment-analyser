@@ -74,5 +74,5 @@ reddit-sentiment-analyzer/
 - [ ] Implement data visualization.
 - [ ] Create a website to handle data visualisation.
 - [ ] Add support for user to choose post on website.
-- [ ] Add abiltiy to change graphs for sentiment analysis.
+- [ ] Add ability to change graphs for sentiment analysis.
 - [ ] Multi-language support
