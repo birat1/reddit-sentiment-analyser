@@ -70,7 +70,7 @@ reddit-sentiment-analyzer/
 - [x] Retrieve top upvoted comments.
 - [x] Implement basic sentiments. e.g. positive, negative
 - [x] Implement various different models of sentiment analysis.
-- [ ] Implement fine-grained sentiments. e.g. joy, anger, sadness
+- [x] Implement fine-grained sentiments. e.g. joy, anger, sadness
 - [ ] Implement data visualization.
 - [ ] Create a website to handle data visualisation.
 - [ ] Add support for user to choose post on website.
