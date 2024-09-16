@@ -1,0 +1,33 @@
+:root {
+    --background: #000000;
+    --text-color: #dfdfdf;
+    --border-color: #686868;
+    --hover-border-color: #8b8b8b;
+    --button-background: #252525bd;
+    --box-shadow-color: #ffffff18;
+    --font-family: "Noto Sans Mono", "Consolas", monospace;
+}
+
+html, body {
+    height: 100%;
+    background: var(--background);
+    font-family: var(--font-family);
+    color: var(--text-color);
+}
+
+.title {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.result-box {
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--box-shadow-color);
+}
+
+.toggle-comment {
+    font-size: .8rem;
+    color: var(--border-color);
+}
