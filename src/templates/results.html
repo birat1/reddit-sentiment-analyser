@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Sentiment Analysis Results</title>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap" rel="stylesheet"/>
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="../static/css/results.css" />
+
+        <link rel="icon" href="../static/images/logo.png" type="image/png" />
     </head>
     <body>
-        <h1>Sentiment Analysis Results</h1>
-        <ul>
-            {% for result in results %}
-            <li>
-                <Strong>Comment:</Strong> {{ result['Comment'] }}<br>
-                <Strong>TextBlob Polarity:</Strong> {{ result['TextBlob Polarity'] }}<br>
-                <Strong>TextBlob Subjectivity:</Strong> {{ result['TextBlob Subjectivity'] }}<br>
-                <Strong>VADER Score:</Strong> {{ result['VADER Score'] }}<br>
-                <Strong>Basic Transformer Label:</Strong> {{ result['Basic Transformer Label'] }}<br>
-                <Strong>Basic Transformer Score:</Strong> {{ result['Basic Transformer Score'] }}<br>
-                <Strong>Fine-Grained Label:</Strong> {{ result['Fine-Grained Label'] }}<br>
-                <Strong>Fine-Grained Score:</Strong> {{ result['Fine-Grained Score'] }}<br>
-                <br>
-            </li>
-            {% endfor %}
-        </ul>
-        <a href="/">Analyze another URL</a>
+        <h1 class="text-center title">sentiment analysis results</h1>
+        <p class="text-center">Positive Comments: {{ summary.positive_comments }}</p>
+        <p class="text-center">Negative Comments: {{ summary.negative_comments }}</p>
+        <p class="text-center">Neutral Comments: {{ summary.neutral_comments }}</p>
+
+        <div class="container">
+            <div class="row gx-5">
+                {% for result in results %}
+                <div class="col p-3">
+                    <div class="result-box p-3">
+                        <Strong>Comment:</Strong> {{ result['Comment'] }}<br>
+                        <Strong>Basic Sentiment:</Strong> {{ result['Basic Transformer Label'] }} (Score: {{ result['Basic Transformer Score'] }})<br>
+                        <Strong>Fine-Grained Sentiment:</Strong> {{ result['Fine-Grained Label'] }} (Score: {{ result['Fine-Grained Score'] }})<br>
+                        <Strong>TextBlob Polarity:</Strong> {{ result['TextBlob Polarity'] }} | <strong>Subjectivity:</strong> {{ result['TextBlob Subjectivity'] }}<br>
+                        <Strong>VADER Score:</Strong> {{ result['VADER Score'] }}<br>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a href="/">Analyze another URL</a>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>

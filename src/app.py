@@ -38,8 +38,18 @@ def analyze():
     # Perform sentiment analysis on the comments
     results = combined_sentiment_analysis(cleaned_comments)
 
+    positive_comments = sum(1 for result in results if result['Basic Transformer Label'] == 'positive')
+    negative_comments = sum(1 for result in results if result['Basic Transformer Label'] == 'negative')
+    neutral_comments = sum(1 for result in results if result['Basic Transformer Label'] == 'neutral')
+
+    summary = {
+        'positive_comments': positive_comments,
+        'negative_comments': negative_comments,
+        'neutral_comments': neutral_comments
+    }
+
     # Render the results.html template with the analysis results
-    return render_template("results.html", results=results)
+    return render_template("results.html", results=results, summary=summary)
 
 
 # Render dummy results for testing purposes
