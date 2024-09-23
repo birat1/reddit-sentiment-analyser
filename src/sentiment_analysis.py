@@ -34,6 +34,7 @@ def combined_sentiment_analysis(comments):
 
     # Iterate over each comment and perform sentiment analysis
     for comment in comments:
+        author = comment["Author"]
         original_comment = comment["Original"]
         cleaned_comment = comment["Cleaned"]
 
@@ -44,6 +45,7 @@ def combined_sentiment_analysis(comments):
 
         # Append the results to a list
         results.append({
+            "Author": author,
             "Comment": original_comment,
             "TextBlob Polarity": textblob_polarity,
             "TextBlob Subjectivity": textblob_subjectivity,
