@@ -22,6 +22,7 @@ body {
     scrollbar-width: none;
 }
 
+
 body::-webkit-scrollbar {
     display: none;
 }
@@ -38,9 +39,23 @@ body::-webkit-scrollbar {
     box-shadow: 0 4px 8px var(--box-shadow-color);
 }
 
-.toggle-comment {
+.author-avatar {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid var(--button-background);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.details {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
     font-size: .8rem;
     color: var(--border-color);
+    border: none;
 }
 
 .footer {

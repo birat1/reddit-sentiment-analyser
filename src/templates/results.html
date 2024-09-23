@@ -27,20 +27,23 @@
                 {% for result in results %}
                 <div class="col p-3">
                     <div class="result-box p-2">
+                        <img src="{{ result['Author'].icon_img }}" alt="Author's Avatar" class="author-avatar"><br>
                         <strong>Author:</strong> {{ result['Author'].name }}<br>
                         <strong>Comment:</strong>
                         {% if result['Comment']|length > 100 %}
                             <span class="short-comment">{{ result['Comment'][:100] }}...</span>
                             <span class="full-comment d-none">{{ result['Comment'] }}</span>
-                            <button class="btn p-0 toggle-comment">Read more</button>
                         {% else %}
                             <span>{{ result['Comment'] }}</span>
                         {% endif %}
                         <br>
+                        <button class="btn p-0 details">View more details</button>
+                        <!--
                         <Strong>Basic Sentiment:</Strong> {{ result['Basic Transformer Label'] }} (Score: {{ result['Basic Transformer Score'] }})<br>
                         <Strong>Fine-Grained Sentiment:</Strong> {{ result['Fine-Grained Label'] }} (Score: {{ result['Fine-Grained Score'] }})<br>
                         <Strong>TextBlob Polarity:</Strong> {{ result['TextBlob Polarity'] }} | <strong>Subjectivity:</strong> {{ result['TextBlob Subjectivity'] }}<br>
                         <Strong>VADER Score:</Strong> {{ result['VADER Score'] }}<br>
+                        -->
                     </div>
                 </div>
                 {% endfor %}
