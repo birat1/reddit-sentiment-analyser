@@ -36,25 +36,20 @@
                             <span>{{ result['Comment'] }}</span>
                         {% endif %}
                         <br>
-                        <button class="btn p-0 details" data-bs-toggle="modal" data-bs-target="#details-modal">View more details</button>
+                        <button class="btn p-0 details">View more details</button>
                     </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
 
-        <div class="modal"  id="details-modal">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal fade"  id="details-modal">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h6 class="modal-title">Details</h6>
-                    </div>
-                    <div class="modal-body">
-                        <strong>Author:</strong><br>
-                        <strong>Comment:</strong><br>
-                        <strong>Basic Sentiment:</strong><br>
-                        <strong>Fine-Grained Sentiment:</strong><br>
-                    </div>
+                    <strong id="author"></strong><br>
+                    <strong id="comment"></strong><br>
+                    <strong id="basic-sentiment"></strong><br>
+                    <strong id="fine-sentiment"></strong><br>
                 </div>
             </div>
         </div>
