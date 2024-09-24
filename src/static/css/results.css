@@ -5,6 +5,7 @@
     --hover-border-color: #8b8b8b;
     --button-background: #252525bd;
     --box-shadow-color: #ffffff18;
+    --modal-background: #1d1d1d;
     --font-family: "Noto Sans Mono", "Consolas", monospace;
 }
 
@@ -56,6 +57,11 @@ body::-webkit-scrollbar {
     font-size: .8rem;
     color: var(--border-color);
     border: none;
+    margin-top: auto;
+}
+
+.modal-content {
+    background-color: var(--modal-background);
 }
 
 .footer {

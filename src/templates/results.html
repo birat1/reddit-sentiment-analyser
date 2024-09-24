@@ -26,33 +26,43 @@
             <div class="row row-cols-4">
                 {% for result in results %}
                 <div class="col p-3">
-                    <div class="result-box p-2">
+                    <div class="result-box p-2" data-author="{{ result['Author'] }}" data-comment="{{ result['Comment'] }}" data-basic-sentiment="{{ result['Basic Transformer Label'] }}" data-fine-sentiment="{{ result['Fine-Grained Label'] }}" >
                         <img src="{{ result['Author'].icon_img }}" alt="Author's Avatar" class="author-avatar"><br>
                         <strong>Author:</strong> {{ result['Author'].name }}<br>
                         <strong>Comment:</strong>
                         {% if result['Comment']|length > 100 %}
                             <span class="short-comment">{{ result['Comment'][:100] }}...</span>
-                            <span class="full-comment d-none">{{ result['Comment'] }}</span>
                         {% else %}
                             <span>{{ result['Comment'] }}</span>
                         {% endif %}
                         <br>
-                        <button class="btn p-0 details">View more details</button>
-                        <!--
-                        <Strong>Basic Sentiment:</Strong> {{ result['Basic Transformer Label'] }} (Score: {{ result['Basic Transformer Score'] }})<br>
-                        <Strong>Fine-Grained Sentiment:</Strong> {{ result['Fine-Grained Label'] }} (Score: {{ result['Fine-Grained Score'] }})<br>
-                        <Strong>TextBlob Polarity:</Strong> {{ result['TextBlob Polarity'] }} | <strong>Subjectivity:</strong> {{ result['TextBlob Subjectivity'] }}<br>
-                        <Strong>VADER Score:</Strong> {{ result['VADER Score'] }}<br>
-                        -->
+                        <button class="btn p-0 details" data-bs-toggle="modal" data-bs-target="#details-modal">View more details</button>
                     </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
 
+        <div class="modal"  id="details-modal">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title">Details</h6>
+                    </div>
+                    <div class="modal-body">
+                        <strong>Author:</strong><br>
+                        <strong>Comment:</strong><br>
+                        <strong>Basic Sentiment:</strong><br>
+                        <strong>Fine-Grained Sentiment:</strong><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer class="footer">
             <a href="/">return</a>
-          </footer>
+        </footer>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="../static/js/results.js"></script>
     </body>
