@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Get the modal
     var modalElement = document.getElementById('details-modal');
     var modal = new bootstrap.Modal(modalElement);
-    console.log(modal);
 
     // Get the button that opens the modal
     var btns = document.getElementsByClassName("details");

@@ -63,6 +63,7 @@ body::-webkit-scrollbar {
 .modal-content {
     background-color: var(--modal-background);
     padding: 10px;
+    font-size: .8rem;
 }
 
 .footer {
