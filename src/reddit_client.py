@@ -25,7 +25,7 @@ class RedditClient:
             return None
         
     # Fetch comments from a Reddit post    
-    def fetch_comments(self, submission_url, limit=10):
+    def fetch_comments(self, submission_url, limit=20):
         if not self.reddit:
             print("Reddit authentication failed. Cannot fetch comments.")
             return []
