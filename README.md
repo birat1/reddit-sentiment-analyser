@@ -56,4 +56,3 @@ reddit-sentiment-analyzer/
         ```
 
     - You can obtain your Reddit API credentials by creating an application at [Reddit Apps](https://www.reddit.com/prefs/apps/).
-    
