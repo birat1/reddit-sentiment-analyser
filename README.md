@@ -8,7 +8,9 @@ This project performs sentiment analysis on Reddit comments using multiple senti
 reddit-sentiment-analyzer/
 │
 ├── src/                        # Source code directory
+│   ├── app.py                  # Script to run the sentiment analysis (website version)
 │   ├── config.py               # Configuration file for environment variables
+│   ├── main.py                 # Script to run the sentiment analysis (console version)
 │   ├── preprocess_data.py      # Script for preprocessing the data
 │   ├── reddit_client.py        # Script for initiating and fetching comments
 │   ├── sentiment_analysis.py   # Script containing sentiment analysis models
@@ -55,10 +57,3 @@ reddit-sentiment-analyzer/
 
     - You can obtain your Reddit API credentials by creating an application at [Reddit Apps](https://www.reddit.com/prefs/apps/).
 
-## Dependencies
-
-- `praw` - For interacting with the Reddit API.
-- `textblob` - For sentiment analysis.
-- `vaderSentiment` - For sentiment analysis using VADER.
-- `transformers` - For sentiment analysis using Hugging Face transformer models.
-- `nltk` - Natural Language Toolkit for text processing.
