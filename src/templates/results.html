@@ -27,8 +27,18 @@
                 {% for result in results %}
                 <div class="col p-3">
                     <div class="result-box p-2" data-author="{{ result['Author'] }}" data-comment="{{ result['Comment'] }}" data-basic-sentiment="{{ result['Basic Transformer Label'] }}" data-fine-sentiment="{{ result['Fine-Grained Label'] }}" >
-                        <img src="{{ result['Author'].icon_img }}" alt="Author's Avatar" class="author-avatar"><br>
-                        <strong>Author:</strong> {{ result['Author'].name }}<br>
+                        {% if result['Author'].icon_img %}
+                            <img src="{{ result['Author'].icon_img }}" alt="Author's Avatar" class="author-avatar"><br>
+                        {% else %}
+                            <img src="../static/images/default-avatar.png" alt="Default Avatar" class="author-avatar"><br>
+                        {% endif %}
+                        <strong>Author:</strong>
+                        {% if result['Author'].name %}
+                            {{ result['Author'].name }}
+                        {% else %}
+                            [deleted]
+                        {% endif %}
+                        <br>
                         <strong>Comment:</strong>
                         {% if result['Comment']|length > 100 %}
                             <span class="short-comment">{{ result['Comment'][:100] }}...</span>
